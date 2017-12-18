@@ -1,4 +1,4 @@
-# Get next line
+# Get Next Line
 
 Get the next line of a file.
 
@@ -8,7 +8,7 @@ Authorized functions:
  - Malloc
  - Free
  
- Project subject : https://github.com/AnthonyLedru/get_next_line/blob/master/get_next_line.pdf
+Project subject : https://github.com/AnthonyLedru/get_next_line/blob/master/get_next_line.pdf
  
  
 
