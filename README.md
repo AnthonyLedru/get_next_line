@@ -16,8 +16,8 @@ char *line;
 int fd = open(path, O_RDONLY);
 while (get_next_line(fd, &line) == 1)
 {
-  printf("%d\n", line);
-  free(line);
+    printf("%d\n", line);
+    free(line);
 }
 ```
 
