@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aledru <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: aledru <aledru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 22:19:40 by aledru            #+#    #+#             */
-/*   Updated: 2017/11/09 21:02:29 by aledru           ###   ########.fr       */
+/*   Created: 2017/12/15 14:33:21 by aledru            #+#    #+#             */
+/*   Updated: 2017/12/15 14:33:58 by aledru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *str, int c)
+int		ft_abs(int nb)
 {
-	int		n;
-
-	n = ft_strlen(str);
-	while (n >= 0)
-	{
-		if (str[n] == (unsigned char)c)
-			return ((char*)&str[n]);
-		n--;
-	}
-	return (NULL);
+	if (nb < 0)
+		nb = -nb;
+	return (nb);
 }

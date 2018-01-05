@@ -6,7 +6,7 @@
 /*   By: aledru <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 05:51:03 by aledru            #+#    #+#             */
-/*   Updated: 2017/11/13 09:25:36 by aledru           ###   ########.fr       */
+/*   Updated: 2017/11/17 10:02:28 by aledru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	nb_letters(const char *s, char c)
 	return (i);
 }
 
-static char	*thrash(char const *s, char c, char *t, char **string)
+static char	*copy_content(char const *s, char c, char *t, char **string)
 {
 	int	i;
 	int	entered;
@@ -86,7 +86,7 @@ char		**ft_strsplit(char const *s, char c)
 	nb_word = nb_words(s, c);
 	if ((string = (char**)malloc(sizeof(char*) * (nb_word + 1))) == NULL)
 		return (NULL);
-	t = thrash(s, c, t, string);
+	t = copy_content(s, c, t, string);
 	string[nb_word] = 0;
 	return (string);
 }

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "libft/libft.h"
+#include "libft/includes/libft.h"
 
 /*
 ** Get the link that correspond to the file descriptor given in param.

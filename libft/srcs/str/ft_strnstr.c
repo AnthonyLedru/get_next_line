@@ -1,18 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aledru <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 04:46:14 by aledru            #+#    #+#             */
-/*   Updated: 2017/11/08 05:08:29 by aledru           ###   ########.fr       */
+/*   Created: 2017/11/08 03:10:37 by aledru            #+#    #+#             */
+/*   Updated: 2017/11/16 09:45:37 by aledru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalnum(int c)
+char	*ft_strnstr(const char *str, const char *to_find, size_t n)
 {
-	return (ft_isalpha(c) == 1 || ft_isdigit(c) == 1);
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	if (to_find[0] == '\0')
+		return ((char*)str);
+	while (str[i] && i < (int)n)
+	{
+		while (str[i + j] == to_find[j] && i + j < (int)n)
+		{
+			if (to_find[j + 1] == '\0')
+				return ((char*)&str[i]);
+			j++;
+		}
+		i++;
+		j = 0;
+	}
+	return (NULL);
 }

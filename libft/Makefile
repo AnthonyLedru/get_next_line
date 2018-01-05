@@ -3,37 +3,128 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aledru <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: aledru <aledru@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/11/07 05:28:52 by aledru            #+#    #+#              #
-#    Updated: 2017/11/14 10:15:38 by aledru           ###   ########.fr        #
+#    Created: 2017/12/09 14:26:59 by aledru            #+#    #+#              #
+#    Updated: 2017/12/15 14:34:22 by aledru           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
-FLAG = -c -Werror -Wextra -Wall
-SRC = memset bzero memcpy memccpy strlen strdup strcpy strncpy strcat strncat \
-		strlcat strstr strnstr strcmp strncmp atoi isalpha isdigit isalnum \
-		isascii isprint toupper tolower memmove memchr memcmp strchr strrchr \
-		memalloc memdel strnew strdel strclr striter striteri strmap strmapi \
-		strequ strnequ strsub strjoin strtrim strtrim strsplit itoa putchar \
-		putchar_fd putstr putendl putnbr putstr_fd putendl_fd putnbr_fd \
-		lstnew lstdelone lstdel lstadd lstiter lstmap isblank islower isupper \
-		isspace isxdigit
-SRCFT = $(addprefix ft_, $(SRC)) 
-SRC_O = $(addsuffix .o, $(SRCFT)) 
-SRC_C = $(addsuffix .c, $(SRCFT))
+NAME := libft
 
-all: $(NAME)
+INCLUDE_FOLDERS := -I includes/
+SOURCES_FOLDER := srcs/
+OBJECTS_FOLDER := objs/
 
-$(NAME):
-	gcc $(FLAG) $(SRC_C) -I.
-	ar rc $(NAME) $(SRC_O)
+vpath %.c srcs
+
+FLAGS := -Wall -Werror -Wextra
+
+SOURCES := \
+		mem/ft_memset.c \
+		mem/ft_bzero.c \
+		mem/ft_memcpy.c \
+		mem/ft_memccpy.c \
+		mem/ft_memmove.c \
+		mem/ft_memchr.c \
+		mem/ft_memcmp.c \
+		mem/ft_memalloc.c \
+		mem/ft_memdel.c \
+		str/ft_strlen.c \
+		str/ft_strdup.c \
+		str/ft_strcpy.c \
+		str/ft_strncpy.c \
+		str/ft_strcat.c \
+		str/ft_strncat.c \
+		str/ft_strlcat.c \
+		str/ft_strstr.c \
+		str/ft_strnstr.c \
+		str/ft_strcmp.c \
+		str/ft_toupper.c \
+		str/ft_tolower.c \
+		str/ft_strchr.c \
+		str/ft_strncmp.c \
+		str/ft_strrchr.c \
+		str/ft_strnew.c \
+		str/ft_strdel.c \
+		str/ft_strclr.c \
+		str/ft_striter.c \
+		str/ft_striteri.c \
+		str/ft_strmap.c \
+		str/ft_strmapi.c \
+		str/ft_strequ.c \
+		str/ft_strnequ.c \
+		str/ft_strsub.c \
+		str/ft_strjoin.c \
+		str/ft_strtrim.c \
+		str/ft_strtrim.c \
+		str/ft_strsplit.c \
+		char/ft_isblank.c \
+		char/ft_islower.c \
+		char/ft_isupper.c \
+		char/ft_isspace.c \
+		char/ft_isxdigit.c \
+		char/ft_isalpha.c \
+		char/ft_isdigit.c \
+		char/ft_isalnum.c \
+		char/ft_isascii.c \
+		char/ft_isprint.c \
+		put/ft_putchar.c \
+		put/ft_putchar_fd.c \
+		put/ft_putstr.c \
+		put/ft_putendl.c \
+		put/ft_putnbr.c \
+		put/ft_putstr_fd.c \
+		put/ft_putendl_fd.c \
+		put/ft_putnbr_fd.c \
+		lst/ft_lstnew.c \
+		lst/ft_lstdelone.c \
+		lst/ft_lstdel.c \
+		lst/ft_lstadd.c \
+		lst/ft_lstiter.c \
+		lst/ft_lstmap.c \
+		others/ft_htoi.c \
+		others/ft_atoi.c \
+		others/ft_itoa.c \
+		num/ft_abs.c \
+
+
+OBJECTS := $(SOURCES:.c=.o)
+
+OBJECTS := $(addprefix $(OBJECTS_FOLDER), $(OBJECTS))
+SOURCES := $(addprefix $(SOURCES_FOLDER), $(SOURCES))
+
+NO_COLOR     := \x1b[0m
+OK_COLOR     := \x1b[32;01m
+HEAD_COLOR   := \x1b[32;01m
+SILENT_COLOR := \x1b[30;01m
+
+all: header $(NAME)
+
+header:
+	@printf "\n$(HEAD_COLOR)--------------------------------\n"
+	@printf "$(HEAD_COLOR)------------ LIBFT -------------\n"
+	@printf "$(HEAD_COLOR)--------------------------------$(NO_COLOR)\n\n"
+
+$(NAME): $(OBJECTS)
+	@printf "\n$(SILENT_COLOR)Compiling $(NAME)...$(NO_COLOR)"
+	@ar rcs $(NAME).a $(OBJECTS)
+	@printf " $(OK_COLOR)Done ✓$(NO_COLOR)\n"
+
+objs/%.o: %.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(FLAGS) $(INCLUDE_FOLDERS) -c $< -o $@
+	@printf "$(notdir $<) "
+	@printf "$(OK_COLOR)✓$(NO_COLOR)\n"
 
 clean:
-	/bin/rm -f $(SRC_O)
+	@rm -rf $(OBJECTS_FOLDER)
+	@printf "$(SILENT_COLOR)$(NAME) : Objects removed$(NO_COLOR)\n"
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@rm -f $(NAME).a
+	@printf "$(SILENT_COLOR)$(NAME) : Library removed$(NO_COLOR)\n"
 
 re: fclean all
+
+.PHONY: all re clean fclean header

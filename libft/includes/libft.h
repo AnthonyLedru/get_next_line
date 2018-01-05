@@ -6,7 +6,7 @@
 /*   By: aledru <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 05:40:02 by aledru            #+#    #+#             */
-/*   Updated: 2017/11/13 09:46:25 by aledru           ###   ########.fr       */
+/*   Updated: 2017/12/15 14:35:03 by aledru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,6 @@ int				ft_islower(int c);
 int				ft_isupper(int c);
 int				ft_isspace(int c);
 int				ft_isxdigit(int c);
+int				ft_htoi(char *hex);
+int				ft_abs(int nb);
 #endif
