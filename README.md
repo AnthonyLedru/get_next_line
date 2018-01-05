@@ -8,9 +8,9 @@ Authorized functions:
  - Malloc
  - Free
  
-## Example
+## Usage
 
-### To read all a file
+### Example to read all a file
 ```
 char *line;
 int fd = open(path, O_RDONLY);
