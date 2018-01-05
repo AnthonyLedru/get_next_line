@@ -16,7 +16,7 @@ make -C libft && gcc get_next_line.c libft/libft.a main.c
  
 ## Usage
 
-` ./a.out [file]
+` ./a.out [file] `
 
 ## Subject 
  
