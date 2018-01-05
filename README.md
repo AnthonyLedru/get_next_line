@@ -8,22 +8,16 @@ Authorized functions:
  - Malloc
  - Free
  
+## Compilation
+
+```
+make -C libft && gcc get_next_line.c libft/libft.a main.c
+```
+ 
 ## Usage
 
-### Example to read all a file
-```
-char *line;
-int fd = open(path, O_RDONLY);
-while (get_next_line(fd, &line) == 1)
-{
-    printf("%d\n", line);
-    free(line);
-}
-```
+` ./a.out [file]
 
 ## Subject 
  
 https://github.com/AnthonyLedru/get_next_line/blob/master/get_next_line.pdf
- 
- 
-
