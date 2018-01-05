@@ -8,7 +8,22 @@ Authorized functions:
  - Malloc
  - Free
  
-Project subject : https://github.com/AnthonyLedru/get_next_line/blob/master/get_next_line.pdf
+## Example
+
+### To read all a file
+```
+char *line;
+int fd = open(path, O_RDONLY);
+while (get_next_line(fd, &line) == 1)
+{
+  printf("%d\n", line);
+  free(line);
+}
+```
+
+## Subject 
+ 
+https://github.com/AnthonyLedru/get_next_line/blob/master/get_next_line.pdf
  
  
 
