@@ -26,6 +26,5 @@ int	main(int ac, char **av)
 		printf("%s\n", line);
 		free(line);
 	}
-	sleep(200);
 	return (0);
 }
