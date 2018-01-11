@@ -6,7 +6,7 @@
 /*   By: aledru <aledru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 15:04:08 by aledru            #+#    #+#             */
-/*   Updated: 2018/01/11 22:10:20 by aledru           ###   ########.fr       */
+/*   Updated: 2018/01/12 00:13:02 by aledru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int	main(int ac, char **av)
 		printf("%s\n", line);
 		free(line);
 	}
+	sleep(200);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: aledru <aledru@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 15:56:00 by aledru            #+#    #+#             */
-/*   Updated: 2018/01/11 22:08:24 by aledru           ###   ########.fr       */
+/*   Updated: 2018/01/12 00:08:34 by aledru           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,16 +87,9 @@ static void		*get_line_after_n(char **last_line_read)
 
 	to_free = *last_line_read;
 	if (ft_strchr(*last_line_read, '\n'))
-	{
-		*last_line_read = ft_strsub(ft_strchr(*last_line_read, '\n'), 1,
-				ft_strlen(ft_strchr(*last_line_read, '\n')));
-	}
+		*last_line_read = ft_strdup(&ft_strchr(*last_line_read, '\n')[1]);
 	else if (ft_strchr(*last_line_read, '\0'))
-	{
 		*last_line_read = ft_strdup(ft_strchr(*last_line_read, '\0'));
-	}
-	else
-		free(*last_line_read);
 	ft_memdel((void*)&to_free);
 	return (*last_line_read);
 }
@@ -111,9 +104,7 @@ static int		read_file(char **content, t_list *lst)
 	char	*buf;
 	int		size;
 	char	*to_free;
-	int		i;
 
-	i = 0;
 	buf = (char*)ft_memalloc(sizeof(char) * BUFF_SIZE + 1);
 	while ((size = read(lst->content_size, buf, BUFF_SIZE)) > 0)
 	{
@@ -123,7 +114,6 @@ static int		read_file(char **content, t_list *lst)
 		ft_memdel((void*)&to_free);
 		if (ft_strchr(*content, '\n'))
 			break ;
-		i++;
 	}
 	ft_memdel((void*)&buf);
 	return (size);
