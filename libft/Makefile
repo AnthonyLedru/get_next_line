@@ -6,11 +6,11 @@
 #    By: aledru <aledru@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/09 14:26:59 by aledru            #+#    #+#              #
-#    Updated: 2017/12/15 14:34:22 by aledru           ###   ########.fr        #
+#    Updated: 2018/01/11 18:27:32 by aledru           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := libft
+NAME := libft.a
 
 INCLUDE_FOLDERS := -I includes/
 SOURCES_FOLDER := srcs/
@@ -18,7 +18,7 @@ OBJECTS_FOLDER := objs/
 
 vpath %.c srcs
 
-FLAGS := -Wall -Werror -Wextra
+FLAGS := -Wall -Werror -Wextra -g
 
 SOURCES := \
 		mem/ft_memset.c \
@@ -107,8 +107,8 @@ header:
 	@printf "$(HEAD_COLOR)--------------------------------$(NO_COLOR)\n\n"
 
 $(NAME): $(OBJECTS)
-	@printf "\n$(SILENT_COLOR)Compiling $(NAME)...$(NO_COLOR)"
-	@ar rcs $(NAME).a $(OBJECTS)
+	@printf "\n$(SILENT_COLOR)Compiling libft...$(NO_COLOR)"
+	@ar rcs $(NAME) $(OBJECTS)
 	@printf " $(OK_COLOR)Done ✓$(NO_COLOR)\n"
 
 objs/%.o: %.c
@@ -119,11 +119,11 @@ objs/%.o: %.c
 
 clean:
 	@rm -rf $(OBJECTS_FOLDER)
-	@printf "$(SILENT_COLOR)$(NAME) : Objects removed$(NO_COLOR)\n"
+	@printf "$(SILENT_COLOR)libft : Objects removed$(NO_COLOR)\n"
 
 fclean: clean
-	@rm -f $(NAME).a
-	@printf "$(SILENT_COLOR)$(NAME) : Library removed$(NO_COLOR)\n"
+	@rm -f $(NAME)
+	@printf "$(SILENT_COLOR)libft : Library removed$(NO_COLOR)\n"
 
 re: fclean all
 
