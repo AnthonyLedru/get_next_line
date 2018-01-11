@@ -18,7 +18,7 @@ OBJECTS_FOLDER := objs/
 
 vpath %.c srcs
 
-FLAGS := -Wall -Werror -Wextra -g
+FLAGS := -Wall -Werror -Wextra
 
 SOURCES := \
 		mem/ft_memset.c \
