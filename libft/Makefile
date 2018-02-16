@@ -6,7 +6,7 @@
 #    By: aledru <aledru@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/09 14:26:59 by aledru            #+#    #+#              #
-#    Updated: 2018/01/11 18:27:32 by aledru           ###   ########.fr        #
+#*   Updated: 2018/02/16 17:24:47 by aledru           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,12 +99,9 @@ OK_COLOR     := \x1b[32;01m
 HEAD_COLOR   := \x1b[32;01m
 SILENT_COLOR := \x1b[30;01m
 
-all: header $(NAME)
+HEADER_PRINTED := NO
 
-header:
-	@printf "\n$(HEAD_COLOR)--------------------------------\n"
-	@printf "$(HEAD_COLOR)------------ LIBFT -------------\n"
-	@printf "$(HEAD_COLOR)--------------------------------$(NO_COLOR)\n\n"
+all: $(NAME)
 
 $(NAME): $(OBJECTS)
 	@printf "\n$(SILENT_COLOR)Compiling libft...$(NO_COLOR)"
@@ -112,6 +109,12 @@ $(NAME): $(OBJECTS)
 	@printf " $(OK_COLOR)Done ✓$(NO_COLOR)\n"
 
 objs/%.o: %.c
+	@if [ "$(HEADER_PRINTED)" = "NO" ]; then \
+		printf "\n$(HEAD_COLOR)--------------------------------\n"; \
+		printf "$(HEAD_COLOR)---------- FT_PRINTF -----------\n"; \
+		printf "$(HEAD_COLOR)--------------------------------$(NO_COLOR)\n\n"; \
+		$(eval HEADER_PRINTED := YES) \
+	fi
 	@mkdir -p $(dir $@)
 	@$(CC) $(FLAGS) $(INCLUDE_FOLDERS) -c $< -o $@
 	@printf "$(notdir $<) "
