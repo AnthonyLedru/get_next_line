@@ -6,7 +6,7 @@
 #    By: aledru <aledru@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/09 14:26:59 by aledru            #+#    #+#              #
-#*   Updated: 2018/02/16 18:03:57 by aledru           ###   ########.fr       *#
+#*   Updated: 2018/02/16 18:07:33 by aledru           ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,7 +111,7 @@ $(NAME): $(OBJECTS)
 objs/%.o: %.c
 	@if [ "$(HEADER_PRINTED)" = "NO" ]; then \
 		printf "\n$(HEAD_COLOR)--------------------------------\n"; \
-		printf "$(HEAD_COLOR)------------- FDF --------------\n"; \
+		printf "$(HEAD_COLOR)------------ LIBFT -------------\n"; \
 		printf "$(HEAD_COLOR)--------------------------------$(NO_COLOR)\n\n"; \
 		$(eval HEADER_PRINTED := YES) \
 	fi
