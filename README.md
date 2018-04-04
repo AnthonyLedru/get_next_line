@@ -3,7 +3,7 @@
 Get the next line of a file.
 
 Authorized functions:
- - All the fonctions from my own libc https://github.com/AnthonyLedru/libft_v2
+ - All the fonctions from my own libc https://github.com/AnthonyLedru/libft
  - Read
  - Malloc
  - Free
