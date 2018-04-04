@@ -8,6 +8,8 @@ Authorized functions:
  - Malloc
  - Free
  
+ This code complies with the 42 school norm: https://github.com/AnthonyLedru/norm/blob/master/norme.pdf
+ 
 ## Compilation
 
 ```
